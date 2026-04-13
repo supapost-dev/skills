@@ -61,11 +61,17 @@ Writes: `generate_image`, `generate_video`, `generate_slides`, `create_influence
 
 ## Canonical workflows
 
-### 1. Build a 10-slide TikTok deck from a prompt
+### 1. Build a TikTok deck from a prompt
 
 1. `generate_slides` with `{ prompt: "<topic + angle + tone>" }`.
 2. The response contains a project with slides. Review with the user.
-3. Optional: `upsert_project` to tweak slide content, then save.
+3. Optional: `upsert_project` to tweak metadata (name, status) only.
+
+> **Don't use `upsert_project` to author slide content from scratch.** The
+> editor stores slides as positioned `layers` with full typography and
+> positioning metadata. `generate_slides` produces that shape correctly.
+> Hand-rolling JSON through `upsert_project` will save but the editor may
+> render blank slides.
 
 ### 2. Create a consistent AI influencer
 
