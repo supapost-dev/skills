@@ -25,7 +25,7 @@ Installing the skill only teaches the agent *how* to use Supapost. To actually c
 
 ```bash
 claude mcp add --transport http supapost \
-  https://api.supapo.st/mcp \
+  https://api.supapo.st/mcp/server \
   --header "Authorization: Bearer sp_..."
 ```
 
@@ -35,7 +35,7 @@ claude mcp add --transport http supapost \
 {
   "mcpServers": {
     "supapost": {
-      "url": "https://api.supapo.st/mcp",
+      "url": "https://api.supapo.st/mcp/server",
       "headers": { "Authorization": "Bearer sp_..." }
     }
   }
