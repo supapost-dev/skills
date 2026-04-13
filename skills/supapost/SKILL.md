@@ -19,9 +19,9 @@ Or download the raw file from **https://supapo.st/skill.md**.
 
 ## Connecting the MCP
 
-Installing the skill only teaches the agent *how* to use Supapost. You also need to connect the MCP so the agent can actually call tools. Create an API key at **https://supapo.st/settings/developer** (keys start with `sp_`), then:
+Installing the skill only teaches the agent *how* to use Supapost. To actually call tools, connect the Supapost MCP. Create an API key at **https://supapo.st/settings/developer** (keys start with `sp_`), then pick the install for your client.
 
-**Recommended — remote (hosted):**
+**Claude Code (CLI):**
 
 ```bash
 claude mcp add --transport http supapost \
@@ -29,15 +29,22 @@ claude mcp add --transport http supapost \
   --header "Authorization: Bearer sp_..."
 ```
 
-No local install, no env var to manage, auto-updates with the server.
+**Cursor / Windsurf / VS Code / any MCP client** — add to `~/.cursor/mcp.json` (or `.mcp.json` in the project root):
 
-**Alternative — local (stdio):**
-
-```bash
-claude mcp add supapost --env SUPAPOST_API_KEY=sp_... -- npx -y @supapost/mcp
+```json
+{
+  "mcpServers": {
+    "supapost": {
+      "url": "https://api.supapo.st/mcp",
+      "headers": { "Authorization": "Bearer sp_..." }
+    }
+  }
+}
 ```
 
-Use this if you're on a network that blocks the remote endpoint or need a custom `SUPAPOST_API_URL`.
+**Verify the connection.** After registering, call `list_models` once. A valid key returns a JSON list. A `401 Invalid API key` means the key is wrong, expired, or missing the `sp_` prefix — regenerate it at https://supapo.st/settings/developer.
+
+**Local stdio (MCP developers only):** if you need to run the server locally against a custom `SUPAPOST_API_URL`, use the stdio package: `claude mcp add supapost --env SUPAPOST_API_KEY=sp_... -- npx -y @supapost/mcp`.
 
 ## Tools at a glance
 
