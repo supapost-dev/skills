@@ -1,6 +1,6 @@
 ---
 name: supapost
-version: 0.1.1
+version: 1.0.1
 description: Generate AI images and video, build TikTok slideshows, manage AI influencers, and schedule posts to TikTok / Instagram / YouTube / X through the Supapost MCP. Use whenever the user asks to create social content, run image-to-video, lock a character identity, or queue posts across connected accounts.
 license: MIT-0
 homepage: https://supapo.st/developers/openclaw
@@ -48,7 +48,7 @@ Installing the skill only teaches the agent *how* to use Supapost. To actually c
 
 ```bash
 claude mcp add --transport http supapost \
-  https://api.supapo.st/mcp/server \
+  https://mcp.supapo.st \
   --header "Authorization: Bearer sp_..."
 ```
 
@@ -58,7 +58,7 @@ claude mcp add --transport http supapost \
 {
   "mcpServers": {
     "supapost": {
-      "url": "https://api.supapo.st/mcp/server",
+      "url": "https://mcp.supapo.st",
       "headers": { "Authorization": "Bearer sp_..." }
     }
   }
