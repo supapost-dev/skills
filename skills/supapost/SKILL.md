@@ -1,6 +1,29 @@
 ---
 name: supapost
+version: 0.1.1
 description: Generate AI images and video, build TikTok slideshows, manage AI influencers, and schedule posts to TikTok / Instagram / YouTube / X through the Supapost MCP. Use whenever the user asks to create social content, run image-to-video, lock a character identity, or queue posts across connected accounts.
+license: MIT-0
+homepage: https://supapo.st/developers/openclaw
+repository: https://github.com/supapost-dev/skills
+documentation: https://supapo.st/developers/mcp
+keywords:
+  - supapost
+  - mcp
+  - tiktok
+  - ai-influencer
+  - content-generation
+  - scheduler
+metadata:
+  openclaw:
+    requires:
+      env:
+        - SUPAPOST_API_KEY
+      bins: []
+    primaryEnv: SUPAPOST_API_KEY
+    mcp:
+      transport: streamable-http
+      url: https://mcp.supapo.st
+      auth: oauth
 ---
 
 # Supapost
